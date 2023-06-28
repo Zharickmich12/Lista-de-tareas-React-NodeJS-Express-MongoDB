@@ -1,10 +1,18 @@
-import './Styles.css';
+import React from "react";
 
-export const Task =({name, completed}) => {
-    return (
-        <div className={`task ${completed ? 'completed' : ''}`}>
-            <input type= 'checkbox' checked= {completed} readOnly />
-            <span>{name}</span>
-        </div>
-    )
-}
+const TaskItem = ({ task, toggleTask }) => {
+  const { id, description, completed } = task;
+
+  const handleToggle = () => {
+    toggleTask(id);
+  };
+
+  return (
+    <div className="task-item">
+      <input type="checkbox" checked={completed} onChange={handleToggle} />
+      <span className={completed ? "completed" : ""}>{description}</span>
+    </div>
+  );
+};
+
+export default TaskItem;

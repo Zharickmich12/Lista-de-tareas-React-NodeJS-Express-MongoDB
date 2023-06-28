@@ -1,21 +1,48 @@
-import './Components/Styles.css';
-import { Header } from './Components/Header';
-import { Tasklist } from './Components/Tasklist';
+import React, { useState, useEffect } from "react";
+import TaskForm from "./Components/TaskForm";
+import TaskList from "./Components/Tasklist";
+import "./App.css";
 
 const App = () => {
-  const tasks = [
-    { name: 'Tarea 1', completed: false},
-    { name: 'Tarea 2', completed: true},
-    { name: 'Tarea 3', completed: false},
-  ];
+    const [tasks, setTasks] = useState([]);
 
-  return (
-      <div>
-        <Header/>
-        <Tasklist tasks={tasks}/>
-      </div>  
-      
-  )
+    useEffect(() => {
+        const storedTasks = localStorage.getItem("tasks");
+        if (storedTasks) {
+            setTasks(JSON.parse(storedTasks));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+      }, [tasks]);
+    
+      const addTask = (description) => {
+        const newTask = {
+          id: Date.now(),
+          description,
+          completed: false,
+        };
+        setTasks([...tasks, newTask]);
+      };
+    
+      const toggleTask = (taskId) => {
+        const updatedTasks = tasks.map((task) => {
+          if (task.id === taskId) {
+            return { ...task, completed: !task.completed };
+          }
+          return task;
+        });
+        setTasks(updatedTasks);
+      };
+    
+      return (
+        <div className="app">
+          <h1>Task List</h1>
+          <TaskForm addTask={addTask} />
+          <TaskList tasks={tasks} toggleTask={toggleTask} />
+        </div>
+      );
 }
 
 export default App;

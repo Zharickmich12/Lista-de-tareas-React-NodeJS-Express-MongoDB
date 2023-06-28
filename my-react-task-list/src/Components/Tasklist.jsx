@@ -1,17 +1,14 @@
-import './Styles.css';
-import { Task } from './Task';
+import React from "react";
+import TaskItem from "./Task";
 
-export const Tasklist = ({ tasks }) => {
-    return (
-        <div className="task-list">
-            <h2 className="list-title">Lista de Tareas</h2>
-            <ul>
-                {tasks.map((tasks, index) => (
-                    <li key={index}>
-                        <Task name={tasks.name} completed={tasks.completed}/>
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+const TaskList = ({ tasks, toggleTask }) => {
+  return (
+    <div className="task-list">
+      {tasks.map((task) => (
+        <TaskItem key={task.id} task={task} toggleTask={toggleTask} />
+      ))}
+    </div>
+  );
 };
+
+export default TaskList;
