@@ -1,18 +1,17 @@
-import React from "react";
+import '../App.css';
 
-const TaskItem = ({ task, toggleTask }) => {
-  const { id, description, completed } = task;
-
-  const handleToggle = () => {
-    toggleTask(id);
+export const Task = ({ name, completed, onDelete, onToggleComplete }) => {
+  const handleCheckboxChange = () => {
+    onToggleComplete(name);
   };
 
   return (
-    <div className="task-item">
-      <input type="checkbox" checked={completed} onChange={handleToggle} />
-      <span className={completed ? "completed" : ""}>{description}</span>
+    <div className={`task ${completed ? 'completed' : ''}`}>
+      <input type="checkbox" checked={completed} onChange={handleCheckboxChange} />
+      <span>{name}</span>
+      <button className="delete-button" onClick={() => onDelete(name)}>
+        <span class="material-symbols-outlined">delete</span>
+      </button>
     </div>
   );
 };
-
-export default TaskItem;

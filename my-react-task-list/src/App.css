@@ -1,65 +1,91 @@
 body {
-    background-color: #121212;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .app {
-    max-width: 400px;
-    padding: 20px;
-    background-color: #222;
-    color: #fff;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #a23de8;
-  }
-  
-  .task-form {
-    display: flex;
-    margin-bottom: 10px;
-  }
-  
-  .task-form input[type="text"] {
-    flex-grow: 1;
-    padding: 5px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #333;
-    border: none;
-    outline: none;
-  }
-  
-  .task-form button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    font-size: 14px;
-    color: #fff;
-    background-color: #a23de8;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-  
-  .task-list {
-    margin-top: 10px;
-  }
-  
-  .task-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-  }
-  
-  .task-item input[type="checkbox"] {
-    margin-right: 5px;
-  }
-  
-  .task-item .completed {
-    text-decoration: line-through;
-    color: #888;
-  }
+  background-color: #1b1b1b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-top: 3%;
+}
+
+.task-list {
+  background-color: #151515;
+  padding: 20px;
+  border-radius: 5px;
+  width: 800px;
+}
+
+.list-title {
+  color: #FCBAAD;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  background-color: #202020;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: #FCBAAD;
+  margin: 0;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  background-color: #202020;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.task.completed {
+  background-color: #323232;
+}
+
+.task input {
+  margin-right: 10px;
+}
+
+.task span {
+  color: #FCBAAD;
+  text-decoration: none;
+}
+
+.delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.add-task {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.add-task input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #FCBAAD;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.add-task button {
+  background-color: #FCBAAD;
+  color: white;
+  border: none;
+  padding: 6px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
