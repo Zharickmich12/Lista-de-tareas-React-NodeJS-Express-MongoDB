@@ -10,6 +10,7 @@ export const Tasklist = ({ tasks, onDelete, onToggleComplete }) => {
           <li key={index}>
             <Task
               name={task.name}
+              description={task.description}
               completed={task.completed}
               onDelete={onDelete}
               onToggleComplete={onToggleComplete}

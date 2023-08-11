@@ -5,13 +5,19 @@ import { Tasklist } from './Components/Tasklist';
 import { useTaskManager } from './useTaskManager';
 
 const App = () => {
-  const { tasks, createTask, deleteTask, updateTask } = useTaskManager(); // Usamos el hook
+  const { tasks, createTask, deleteTask, toggleComplete } = useTaskManager(); // Usamos el hook
 
   const [newTaskName, setNewTaskName] = useState('');
+  const [newTaskDescription, setNewTaskDescription] = useState('');
 
   const handleAddTask = () => {
-    createTask(newTaskName);
-    setNewTaskName('');
+    if (newTaskName.trim().length >= 3) {
+      createTask(newTaskName, newTaskDescription); 
+      setNewTaskName('');
+      setNewTaskDescription('');
+    } else {
+      alert("El nombre de la tarea debe tener al menos 3 caracteres.");
+    }
   };
 
   return (
@@ -25,6 +31,12 @@ const App = () => {
           value={newTaskName}
           onChange={(e) => setNewTaskName(e.target.value)}
         />
+        <input
+          type="text"
+          placeholder="Descripción (opcional)"
+          value={newTaskDescription}
+          onChange={(e) => setNewTaskDescription(e.target.value)}
+        />
         <button className="add-button" onClick={handleAddTask}>
           <span className="material-symbols-outlined">add_circle</span>
         </button>
@@ -32,7 +44,7 @@ const App = () => {
       <Tasklist
         tasks={tasks}
         onDelete={deleteTask}
-        onToggleComplete={(taskName, updatedCompleted) => updateTask(taskName, updatedCompleted)}
+        onToggleComplete={toggleComplete}
       />
     </div>
   );

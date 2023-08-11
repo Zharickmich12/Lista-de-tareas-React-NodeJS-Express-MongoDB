@@ -9,9 +9,9 @@ export const useTaskManager = () => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
 
-  const createTask = (newTaskName) => {
+  const createTask = (newTaskName, newTaskDescription) => {
     if (newTaskName.trim() !== '') {
-      setTasks([...tasks, { name: newTaskName, completed: false }]);
+      setTasks([...tasks, { name: newTaskName, description: newTaskDescription, completed: false }]);
     }
   };
 
