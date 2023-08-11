@@ -1,31 +1,17 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Header } from './Components/Header';
 import { Tasklist } from './Components/Tasklist';
+import { useTaskManager } from './useTaskManager';
 
 const App = () => {
-  const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  const { tasks, createTask, deleteTask, updateTask } = useTaskManager(); // Usamos el hook
 
-  const [tasks, setTasks] = useState(storedTasks);
   const [newTaskName, setNewTaskName] = useState('');
 
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
-
-  const handleDeleteTask = (taskName) => {
-    setTasks(tasks.filter(task => task.name !== taskName));
-  };
-
-  const handleToggleComplete = (taskName) => {
-    setTasks(tasks.map(task => task.name === taskName ? { ...task, completed: !task.completed } : task));
-  };
-
   const handleAddTask = () => {
-    if (newTaskName.trim() !== '') {
-      setTasks([...tasks, { name: newTaskName, completed: false }]);
-      setNewTaskName('');
-    }
+    createTask(newTaskName);
+    setNewTaskName('');
   };
 
   return (
@@ -40,13 +26,13 @@ const App = () => {
           onChange={(e) => setNewTaskName(e.target.value)}
         />
         <button className="add-button" onClick={handleAddTask}>
-          <span class="material-symbols-outlined">add_circle</span>
+          <span className="material-symbols-outlined">add_circle</span>
         </button>
       </div>
       <Tasklist
         tasks={tasks}
-        onDelete={handleDeleteTask}
-        onToggleComplete={handleToggleComplete}
+        onDelete={deleteTask}
+        onToggleComplete={(taskName, updatedCompleted) => updateTask(taskName, updatedCompleted)}
       />
     </div>
   );

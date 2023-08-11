@@ -2,7 +2,7 @@ import '../App.css';
 
 export const Task = ({ name, completed, onDelete, onToggleComplete }) => {
   const handleCheckboxChange = () => {
-    onToggleComplete(name);
+    onToggleComplete(name, !completed);
   };
 
   return (
