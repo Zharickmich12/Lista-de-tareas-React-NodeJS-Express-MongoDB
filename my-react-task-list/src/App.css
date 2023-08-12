@@ -77,6 +77,11 @@ ul {
   text-decoration: none;
 }
 
+
+.task span:hover {
+  color: #61dafb;
+}
+
 .delete-button {
   background-color: transparent;
   border: none;
@@ -131,4 +136,95 @@ ul {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.add-task button:hover {
+  background-color: #61dafb;
+}
+
+.menu {
+  background-color: #202020;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  display: inline;
+  margin-right: 20px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #FCBAAD;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #61dafb;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px;
+  text-align: center;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.home h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.home p {
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.sobre-nosotros {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sobre-nosotros h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.sobre-nosotros p {
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.sobre-nosotros ul {
+  list-style-type: disc;
+  text-align: left;
+  margin-left: 20px;
+  color: #333;
+  font-size: 16px;
+}
+
+.sobre-nosotros li {
+  margin-bottom: 5px;
+}
+
 

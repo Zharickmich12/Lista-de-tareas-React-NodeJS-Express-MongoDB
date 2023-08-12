@@ -8,14 +8,14 @@ export const Tasklist = ({ tasks, onDelete, onToggleComplete }) => {
       <ul>
         {tasks.map((task, index) => (
           <li key={index}>
-            <Task
-              name={task.name}
-              description={task.description}
-              completed={task.completed}
-              onDelete={onDelete}
-              onToggleComplete={onToggleComplete}
-            />
-          </li>
+          <Task
+            name={task.name}
+            description={task.description}
+            completed={task.completed}
+            onDelete={() => onDelete(task.name)}
+            onToggleComplete={onToggleComplete}
+          />
+        </li>
         ))}
       </ul>
     </div>
