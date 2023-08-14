@@ -1,4 +1,4 @@
-import '../App.css';
+import { Box, Checkbox, Button } from '@chakra-ui/react';
 
 export const Task = ({ name, description, completed, onDelete, onToggleComplete }) => {
   const handleCheckboxChange = () => {
@@ -6,15 +6,24 @@ export const Task = ({ name, description, completed, onDelete, onToggleComplete 
   };
 
   return (
-    <div className={`task ${completed ? 'completed' : ''}`}>
-      <input type="checkbox" checked={completed} onChange={handleCheckboxChange} />
-      <div className="task-content">
-        <span className="task-name">{name}</span>
-        <p className="task-description">{description}</p>
-      </div>
-      <button className="delete-button" onClick={() => onDelete(name)}>
-        <span class="material-symbols-outlined">delete</span>
-      </button>
-    </div>
+    <Box
+    p={4}
+    bg={completed ? 'gray.700' : 'gray.800'}
+    color={completed ? 'gray.100' : 'rosybrown'} 
+    borderRadius="md"
+    boxShadow="sm"
+    display="flex"
+    alignItems="center"
+    mb={2}
+  >
+    <Checkbox isChecked={completed} onChange={handleCheckboxChange} mr={4} />
+    <Box flex={1}>
+      <span>{name}</span>
+      {description && <p>{description}</p>}
+    </Box>
+    <Button colorScheme={completed ? 'red' : 'gray'} variant={completed ? 'solid' : 'outline'} onClick={() => onDelete(name)} ml={2}>
+      Eliminar
+    </Button>
+  </Box>
   );
 };
